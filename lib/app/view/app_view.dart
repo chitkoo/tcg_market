@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../../home/view/home_page.dart';
+import '../../utils/values.dart';
 
 class AppView extends StatelessWidget {
   const AppView({super.key});
@@ -16,7 +17,14 @@ class AppView extends StatelessWidget {
           theme: ThemeData(
             useMaterial3: true,
             textTheme: GoogleFonts.montserratTextTheme(),
+            colorScheme: ColorScheme.fromSeed(seedColor: secondaryColor),
             appBarTheme: const AppBarTheme(centerTitle: true),
+            elevatedButtonTheme: ElevatedButtonThemeData(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: secondaryColor,
+                foregroundColor: Colors.white,
+              ),
+            ),
           ),
           builder: (context, child) {
             final MediaQueryData data = MediaQuery.of(context);

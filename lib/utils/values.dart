@@ -8,3 +8,4 @@ const Color lowPriceColor = Color(0xff49C78E);
 const Color midPriceColor = Color(0xff3F8ED0);
 const Color highPriceColor = Color(0xffF24667);
 const Color trendPriceColor = Color(0xff946C00);
+

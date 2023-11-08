@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tcg_market/common/screen_wrapper.dart';
-import 'package:tcg_market/utils/colors.dart';
 
+import '../../common/screen_wrapper.dart';
 import '../../favourite/favourite.dart';
 import '../../market/market.dart';
+import '../../utils/values.dart';
 import '../cubit/home_cubit.dart';
 
 class HomePage extends StatelessWidget {
@@ -82,6 +82,7 @@ class _NavBar extends StatelessWidget {
             color: secondaryColor,
           ),
           label: 'Favourite',
+          
         ),
       ],
     );

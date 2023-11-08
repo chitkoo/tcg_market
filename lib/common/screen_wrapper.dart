@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:tcg_market/utils/colors.dart';
+
+import '../utils/values.dart';
 
 class ScreenWrapper extends StatelessWidget {
   const ScreenWrapper({
