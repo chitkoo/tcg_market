@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
+import '../../common/common_methods.dart';
 import '../../common/screen_wrapper.dart';
+import '../../details/view/details_page.dart';
 import '../../utils/values.dart';
 
 class MarketPage extends StatelessWidget {
@@ -20,27 +21,29 @@ class MarketView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenWrapper(
-      child: AnnotatedRegion(
-        value: const SystemUiOverlayStyle(
-          systemNavigationBarColor: primaryColor,
-        ),
-        child: Scaffold(
-          appBar: AppBar(
-            title: const Text(
-              'Pokémon TCG Market',
-              style: TextStyle(
-                color: primaryColor,
-              ),
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text(
+            'Pokémon TCG Market',
+            style: TextStyle(
+              color: primaryColor,
             ),
-            actions: [
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.search),
-              ),
-            ],
           ),
-          body: Center(
+          actions: [
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.search),
+            ),
+          ],
+        ),
+        body: Center(
+          child: InkWell(
+            borderRadius: BorderRadius.circular(5.w),
+            onTap: () => Navigator.of(context).push(
+              CommonMethods.buildPageRoute(page: const DetailsPage()),
+            ),
             child: Container(
+              clipBehavior: Clip.antiAlias,
               width: 85.w,
               height: 50.w,
               decoration: BoxDecoration(

@@ -82,7 +82,6 @@ class _NavBar extends StatelessWidget {
             color: secondaryColor,
           ),
           label: 'Favourite',
-          
         ),
       ],
     );

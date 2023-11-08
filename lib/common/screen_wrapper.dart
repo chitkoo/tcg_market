@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-import '../utils/values.dart';
+import 'package:tcg_market/utils/values.dart';
 
 class ScreenWrapper extends StatelessWidget {
   const ScreenWrapper({
     super.key,
     required this.child,
+   
   });
 
   final Widget child;
+  
 
   @override
   Widget build(BuildContext context) {
