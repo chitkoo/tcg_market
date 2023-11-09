@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
@@ -40,12 +41,12 @@ class Tcgplayer extends Equatable {
   Tcgplayer copyWith({
     String? url,
     String? updatedAt,
-    TcgPrices? prices,
+    TcgPrices? tcgPrices,
   }) {
     return Tcgplayer(
       url: url ?? this.url,
       updatedAt: updatedAt ?? this.updatedAt,
-      tcgPrices: prices ?? this.tcgPrices,
+      tcgPrices: tcgPrices ?? this.tcgPrices,
     );
   }
 

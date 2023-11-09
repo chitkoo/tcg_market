@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
 import 'package:cards_list_repository/src/models/cards_list_data/images.dart';
@@ -152,7 +153,7 @@ class CardData extends Equatable {
     List<Resistance>? resistances,
     List<dynamic>? retreatCost,
     dynamic convertedRetreatCost,
-    SetData? datumSet,
+    SetData? setData,
     String? number,
     String? artist,
     String? rarity,
@@ -176,13 +177,12 @@ class CardData extends Equatable {
       resistances: resistances ?? this.resistances,
       retreatCost: retreatCost ?? this.retreatCost,
       convertedRetreatCost: convertedRetreatCost ?? this.convertedRetreatCost,
-      setData: datumSet ?? this.setData,
+      setData: setData ?? this.setData,
       number: number ?? this.number,
       artist: artist ?? this.artist,
       rarity: rarity ?? this.rarity,
       flavorText: flavorText ?? this.flavorText,
-      nationalPokedexNumbers:
-          nationalPokedexNumbers ?? this.nationalPokedexNumbers,
+      nationalPokedexNumbers: nationalPokedexNumbers ?? this.nationalPokedexNumbers,
       legalities: legalities ?? this.legalities,
       images: images ?? this.images,
       tcgplayer: tcgplayer ?? this.tcgplayer,

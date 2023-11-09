@@ -1,9 +1,10 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 
-import 'set_images.dart';
 import 'legalities.dart';
+import 'set_images.dart';
 
 class SetData extends Equatable {
   final String? id;
@@ -82,7 +83,7 @@ class SetData extends Equatable {
     String? ptcgoCode,
     String? releaseDate,
     String? updatedAt,
-    SetImages? images,
+    SetImages? setImages,
   }) {
     return SetData(
       id: id ?? this.id,
@@ -94,7 +95,7 @@ class SetData extends Equatable {
       ptcgoCode: ptcgoCode ?? this.ptcgoCode,
       releaseDate: releaseDate ?? this.releaseDate,
       updatedAt: updatedAt ?? this.updatedAt,
-      setImages: images ?? this.setImages,
+      setImages: setImages ?? this.setImages,
     );
   }
 
