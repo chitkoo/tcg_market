@@ -20,8 +20,23 @@ class MarketBloc extends Bloc<MarketEvent, MarketState> {
     GetCardsList event,
     Emitter<MarketState> emit,
   ) async {
-    final response = await _cardsListReporitory.getCardsList();
+    emit(state.copyWith(status: ApiStatus.loading));
 
-    debugPrint('Response ${response.data?.length}');
+    try {
+      final response = await _cardsListReporitory.getCardsList();
+
+      if (response.data!.isNotEmpty) {
+        emit(state.copyWith(
+          status: ApiStatus.succeeded,
+          cardsList: response.data,
+        ));
+        debugPrint('Response ${response.data?.length}');
+      } else {
+        emit(state.copyWith(status: ApiStatus.failed, cardsList: []));
+      }
+    } catch (e) {
+      emit(state.copyWith(status: ApiStatus.failed, cardsList: []));
+      debugPrint(e.toString());
+    }
   }
 }

@@ -2,17 +2,17 @@ import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 
-import 'card.dart';
+import 'card_data.dart';
 
 class CardsListEntity extends Equatable {
-  final List<Card>? data;
+  final List<CardData>? data;
 
   const CardsListEntity({this.data});
 
   factory CardsListEntity.fromMap(Map<String, dynamic> data) {
     return CardsListEntity(
       data: (data['data'] as List<dynamic>?)
-          ?.map((e) => Card.fromMap(e as Map<String, dynamic>))
+          ?.map((e) => CardData.fromMap(e as Map<String, dynamic>))
           .toList(),
     );
   }
@@ -34,7 +34,7 @@ class CardsListEntity extends Equatable {
   String toJson() => json.encode(toMap());
 
   CardsListEntity copyWith({
-    List<Card>? data,
+    List<CardData>? data,
   }) {
     return CardsListEntity(
       data: data ?? this.data,

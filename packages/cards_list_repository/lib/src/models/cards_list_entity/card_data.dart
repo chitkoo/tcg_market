@@ -9,7 +9,7 @@ import 'set.dart';
 import 'tcgplayer.dart';
 import 'weakness.dart';
 
-class Card extends Equatable {
+class CardData extends Equatable {
   final String? id;
   final String? name;
   final String? supertype;
@@ -31,7 +31,7 @@ class Card extends Equatable {
   final Images? images;
   final Tcgplayer? tcgplayer;
 
-  const Card({
+  const CardData({
     this.id,
     this.name,
     this.supertype,
@@ -54,7 +54,7 @@ class Card extends Equatable {
     this.tcgplayer,
   });
 
-  factory Card.fromMap(Map<String, dynamic> data) => Card(
+  factory CardData.fromMap(Map<String, dynamic> data) => CardData(
         id: data['id'] as String?,
         name: data['name'] as String?,
         supertype: data['supertype'] as String?,
@@ -115,17 +115,17 @@ class Card extends Equatable {
 
   /// `dart:convert`
   ///
-  /// Parses the string and returns the resulting Json object as [Card].
-  factory Card.fromJson(String data) {
-    return Card.fromMap(json.decode(data) as Map<String, dynamic>);
+  /// Parses the string and returns the resulting Json object as [CardData].
+  factory CardData.fromJson(String data) {
+    return CardData.fromMap(json.decode(data) as Map<String, dynamic>);
   }
 
   /// `dart:convert`
   ///
-  /// Converts [Card] to a JSON string.
+  /// Converts [CardData] to a JSON string.
   String toJson() => json.encode(toMap());
 
-  Card copyWith({
+  CardData copyWith({
     String? id,
     String? name,
     String? supertype,
@@ -147,7 +147,7 @@ class Card extends Equatable {
     Images? images,
     Tcgplayer? tcgplayer,
   }) {
-    return Card(
+    return CardData(
       id: id ?? this.id,
       name: name ?? this.name,
       supertype: supertype ?? this.supertype,

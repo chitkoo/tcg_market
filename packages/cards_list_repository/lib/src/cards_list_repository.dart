@@ -13,6 +13,10 @@ class CardsListReporitory {
   Future<CardsListEntity> getCardsList() async {
     Response response = await _cardsListApiClient.getCardsList();
 
-    return compute(CardsListEntity.fromJson, response.body);
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      return compute(CardsListEntity.fromJson, response.body);
+    } else {
+      return const CardsListEntity(data: []);
+    }
   }
 }

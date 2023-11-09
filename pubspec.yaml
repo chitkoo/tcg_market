@@ -17,6 +17,7 @@ dependencies:
   json_annotation: ^4.8.1
   path_provider: ^2.1.1
   responsive_sizer: ^3.2.0
+  cached_network_image: ^3.3.0
   cards_list_repository:
     path: packages/cards_list_repository
 
