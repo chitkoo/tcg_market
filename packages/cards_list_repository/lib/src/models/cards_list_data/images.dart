@@ -3,19 +3,19 @@ import 'dart:convert';
 import 'package:equatable/equatable.dart';
 
 class Images extends Equatable {
-  final String? symbol;
-  final String? logo;
+  final String? small;
+  final String? large;
 
-  const Images({this.symbol, this.logo});
+  const Images({this.small, this.large});
 
   factory Images.fromMap(Map<String, dynamic> data) => Images(
-        symbol: data['symbol'] as String?,
-        logo: data['logo'] as String?,
+        small: data['small'] as String?,
+        large: data['large'] as String?,
       );
 
   Map<String, dynamic> toMap() => {
-        'symbol': symbol,
-        'logo': logo,
+        'small': small,
+        'large': large,
       };
 
   /// `dart:convert`
@@ -31,15 +31,15 @@ class Images extends Equatable {
   String toJson() => json.encode(toMap());
 
   Images copyWith({
-    String? symbol,
-    String? logo,
+    String? small,
+    String? large,
   }) {
     return Images(
-      symbol: symbol ?? this.symbol,
-      logo: logo ?? this.logo,
+      small: small ?? this.small,
+      large: large ?? this.large,
     );
   }
 
   @override
-  List<Object?> get props => [symbol, logo];
+  List<Object?> get props => [small, large];
 }

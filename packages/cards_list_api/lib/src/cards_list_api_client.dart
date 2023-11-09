@@ -11,7 +11,7 @@ class CardsListApiClient {
 
   Future<Response> getCardsList({
     String page = '1',
-    String pageSize = '1',
+    String pageSize = '10',
   }) async {
     String endPoint = '/v2/cards';
     Map<String, String> query = {

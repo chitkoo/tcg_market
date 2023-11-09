@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:equatable/equatable.dart';
 
 class Holofoil extends Equatable {
-  final dynamic low;
+  final double? low;
   final double? mid;
   final double? high;
   final double? market;
@@ -18,7 +18,7 @@ class Holofoil extends Equatable {
   });
 
   factory Holofoil.fromMap(Map<String, dynamic> data) => Holofoil(
-        low: data['low'] as dynamic,
+        low: (data['low'] as num?)?.toDouble(),
         mid: (data['mid'] as num?)?.toDouble(),
         high: (data['high'] as num?)?.toDouble(),
         market: (data['market'] as num?)?.toDouble(),
@@ -46,7 +46,7 @@ class Holofoil extends Equatable {
   String toJson() => json.encode(toMap());
 
   Holofoil copyWith({
-    dynamic low,
+    double? low,
     double? mid,
     double? high,
     double? market,

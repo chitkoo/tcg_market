@@ -2,10 +2,10 @@ import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 
-import 'images.dart';
+import 'set_images.dart';
 import 'legalities.dart';
 
-class Set extends Equatable {
+class SetData extends Equatable {
   final String? id;
   final String? name;
   final String? series;
@@ -15,9 +15,9 @@ class Set extends Equatable {
   final String? ptcgoCode;
   final String? releaseDate;
   final String? updatedAt;
-  final Images? images;
+  final SetImages? setImages;
 
-  const Set({
+  const SetData({
     this.id,
     this.name,
     this.series,
@@ -27,10 +27,10 @@ class Set extends Equatable {
     this.ptcgoCode,
     this.releaseDate,
     this.updatedAt,
-    this.images,
+    this.setImages,
   });
 
-  factory Set.fromMap(Map<String, dynamic> data) => Set(
+  factory SetData.fromMap(Map<String, dynamic> data) => SetData(
         id: data['id'] as String?,
         name: data['name'] as String?,
         series: data['series'] as String?,
@@ -42,9 +42,9 @@ class Set extends Equatable {
         ptcgoCode: data['ptcgoCode'] as String?,
         releaseDate: data['releaseDate'] as String?,
         updatedAt: data['updatedAt'] as String?,
-        images: data['images'] == null
+        setImages: data['images'] == null
             ? null
-            : Images.fromMap(data['images'] as Map<String, dynamic>),
+            : SetImages.fromMap(data['images'] as Map<String, dynamic>),
       );
 
   Map<String, dynamic> toMap() => {
@@ -57,22 +57,22 @@ class Set extends Equatable {
         'ptcgoCode': ptcgoCode,
         'releaseDate': releaseDate,
         'updatedAt': updatedAt,
-        'images': images?.toMap(),
+        'images': setImages?.toMap(),
       };
 
   /// `dart:convert`
   ///
-  /// Parses the string and returns the resulting Json object as [Set].
-  factory Set.fromJson(String data) {
-    return Set.fromMap(json.decode(data) as Map<String, dynamic>);
+  /// Parses the string and returns the resulting Json object as [SetData].
+  factory SetData.fromJson(String data) {
+    return SetData.fromMap(json.decode(data) as Map<String, dynamic>);
   }
 
   /// `dart:convert`
   ///
-  /// Converts [Set] to a JSON string.
+  /// Converts [SetData] to a JSON string.
   String toJson() => json.encode(toMap());
 
-  Set copyWith({
+  SetData copyWith({
     String? id,
     String? name,
     String? series,
@@ -82,9 +82,9 @@ class Set extends Equatable {
     String? ptcgoCode,
     String? releaseDate,
     String? updatedAt,
-    Images? images,
+    SetImages? images,
   }) {
-    return Set(
+    return SetData(
       id: id ?? this.id,
       name: name ?? this.name,
       series: series ?? this.series,
@@ -94,7 +94,7 @@ class Set extends Equatable {
       ptcgoCode: ptcgoCode ?? this.ptcgoCode,
       releaseDate: releaseDate ?? this.releaseDate,
       updatedAt: updatedAt ?? this.updatedAt,
-      images: images ?? this.images,
+      setImages: images ?? this.setImages,
     );
   }
 
@@ -110,7 +110,7 @@ class Set extends Equatable {
       ptcgoCode,
       releaseDate,
       updatedAt,
-      images,
+      setImages,
     ];
   }
 }

@@ -4,18 +4,15 @@ import 'package:equatable/equatable.dart';
 
 class Legalities extends Equatable {
   final String? unlimited;
-  final String? expanded;
 
-  const Legalities({this.unlimited, this.expanded});
+  const Legalities({this.unlimited});
 
   factory Legalities.fromMap(Map<String, dynamic> data) => Legalities(
         unlimited: data['unlimited'] as String?,
-        expanded: data['expanded'] as String?,
       );
 
   Map<String, dynamic> toMap() => {
         'unlimited': unlimited,
-        'expanded': expanded,
       };
 
   /// `dart:convert`
@@ -32,14 +29,12 @@ class Legalities extends Equatable {
 
   Legalities copyWith({
     String? unlimited,
-    String? expanded,
   }) {
     return Legalities(
       unlimited: unlimited ?? this.unlimited,
-      expanded: expanded ?? this.expanded,
     );
   }
 
   @override
-  List<Object?> get props => [unlimited, expanded];
+  List<Object?> get props => [unlimited];
 }

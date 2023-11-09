@@ -1,11 +1,13 @@
 import 'dart:convert';
 
+import 'package:cards_list_repository/src/models/cards_list_data/images.dart';
 import 'package:equatable/equatable.dart';
 
 import 'attack.dart';
-import 'images.dart';
+import 'cardmarket.dart';
 import 'legalities.dart';
-import 'set.dart';
+import 'resistance.dart';
+import 'set_data.dart';
 import 'tcgplayer.dart';
 import 'weakness.dart';
 
@@ -16,20 +18,22 @@ class CardData extends Equatable {
   final List<dynamic>? subtypes;
   final String? hp;
   final List<dynamic>? types;
-  final List<dynamic>? evolvesTo;
-  final List<dynamic>? rules;
+  final String? evolvesFrom;
   final List<Attack>? attacks;
   final List<Weakness>? weaknesses;
+  final List<Resistance>? resistances;
   final List<dynamic>? retreatCost;
   final dynamic convertedRetreatCost;
-  final Set? datumSet;
+  final SetData? setData;
   final String? number;
   final String? artist;
   final String? rarity;
+  final String? flavorText;
   final List<dynamic>? nationalPokedexNumbers;
   final Legalities? legalities;
   final Images? images;
   final Tcgplayer? tcgplayer;
+  final Cardmarket? cardmarket;
 
   const CardData({
     this.id,
@@ -38,20 +42,22 @@ class CardData extends Equatable {
     this.subtypes,
     this.hp,
     this.types,
-    this.evolvesTo,
-    this.rules,
+    this.evolvesFrom,
     this.attacks,
     this.weaknesses,
+    this.resistances,
     this.retreatCost,
     this.convertedRetreatCost,
-    this.datumSet,
+    this.setData,
     this.number,
     this.artist,
     this.rarity,
+    this.flavorText,
     this.nationalPokedexNumbers,
     this.legalities,
     this.images,
     this.tcgplayer,
+    this.cardmarket,
   });
 
   factory CardData.fromMap(Map<String, dynamic> data) => CardData(
@@ -61,22 +67,25 @@ class CardData extends Equatable {
         subtypes: data['subtypes'] as List<dynamic>?,
         hp: data['hp'] as String?,
         types: data['types'] as List<dynamic>?,
-        evolvesTo: data['evolvesTo'] as List<dynamic>?,
-        rules: data['rules'] as List<dynamic>?,
+        evolvesFrom: data['evolvesFrom'] as String?,
         attacks: (data['attacks'] as List<dynamic>?)
             ?.map((e) => Attack.fromMap(e as Map<String, dynamic>))
             .toList(),
         weaknesses: (data['weaknesses'] as List<dynamic>?)
             ?.map((e) => Weakness.fromMap(e as Map<String, dynamic>))
             .toList(),
+        resistances: (data['resistances'] as List<dynamic>?)
+            ?.map((e) => Resistance.fromMap(e as Map<String, dynamic>))
+            .toList(),
         retreatCost: data['retreatCost'] as List<dynamic>?,
         convertedRetreatCost: data['convertedRetreatCost'] as dynamic,
-        datumSet: data['set'] == null
+        setData: data['set'] == null
             ? null
-            : Set.fromMap(data['set'] as Map<String, dynamic>),
+            : SetData.fromMap(data['set'] as Map<String, dynamic>),
         number: data['number'] as String?,
         artist: data['artist'] as String?,
         rarity: data['rarity'] as String?,
+        flavorText: data['flavorText'] as String?,
         nationalPokedexNumbers:
             data['nationalPokedexNumbers'] as List<dynamic>?,
         legalities: data['legalities'] == null
@@ -88,6 +97,9 @@ class CardData extends Equatable {
         tcgplayer: data['tcgplayer'] == null
             ? null
             : Tcgplayer.fromMap(data['tcgplayer'] as Map<String, dynamic>),
+        cardmarket: data['cardmarket'] == null
+            ? null
+            : Cardmarket.fromMap(data['cardmarket'] as Map<String, dynamic>),
       );
 
   Map<String, dynamic> toMap() => {
@@ -97,20 +109,22 @@ class CardData extends Equatable {
         'subtypes': subtypes,
         'hp': hp,
         'types': types,
-        'evolvesTo': evolvesTo,
-        'rules': rules,
+        'evolvesFrom': evolvesFrom,
         'attacks': attacks?.map((e) => e.toMap()).toList(),
         'weaknesses': weaknesses?.map((e) => e.toMap()).toList(),
+        'resistances': resistances?.map((e) => e.toMap()).toList(),
         'retreatCost': retreatCost,
         'convertedRetreatCost': convertedRetreatCost,
-        'set': datumSet?.toMap(),
+        'set': setData?.toMap(),
         'number': number,
         'artist': artist,
         'rarity': rarity,
+        'flavorText': flavorText,
         'nationalPokedexNumbers': nationalPokedexNumbers,
         'legalities': legalities?.toMap(),
         'images': images?.toMap(),
         'tcgplayer': tcgplayer?.toMap(),
+        'cardmarket': cardmarket?.toMap(),
       };
 
   /// `dart:convert`
@@ -132,20 +146,22 @@ class CardData extends Equatable {
     List<dynamic>? subtypes,
     String? hp,
     List<dynamic>? types,
-    List<dynamic>? evolvesTo,
-    List<dynamic>? rules,
+    String? evolvesFrom,
     List<Attack>? attacks,
     List<Weakness>? weaknesses,
+    List<Resistance>? resistances,
     List<dynamic>? retreatCost,
     dynamic convertedRetreatCost,
-    Set? datumSet,
+    SetData? datumSet,
     String? number,
     String? artist,
     String? rarity,
+    String? flavorText,
     List<dynamic>? nationalPokedexNumbers,
     Legalities? legalities,
     Images? images,
     Tcgplayer? tcgplayer,
+    Cardmarket? cardmarket,
   }) {
     return CardData(
       id: id ?? this.id,
@@ -154,21 +170,23 @@ class CardData extends Equatable {
       subtypes: subtypes ?? this.subtypes,
       hp: hp ?? this.hp,
       types: types ?? this.types,
-      evolvesTo: evolvesTo ?? this.evolvesTo,
-      rules: rules ?? this.rules,
+      evolvesFrom: evolvesFrom ?? this.evolvesFrom,
       attacks: attacks ?? this.attacks,
       weaknesses: weaknesses ?? this.weaknesses,
+      resistances: resistances ?? this.resistances,
       retreatCost: retreatCost ?? this.retreatCost,
       convertedRetreatCost: convertedRetreatCost ?? this.convertedRetreatCost,
-      datumSet: datumSet ?? this.datumSet,
+      setData: datumSet ?? this.setData,
       number: number ?? this.number,
       artist: artist ?? this.artist,
       rarity: rarity ?? this.rarity,
+      flavorText: flavorText ?? this.flavorText,
       nationalPokedexNumbers:
           nationalPokedexNumbers ?? this.nationalPokedexNumbers,
       legalities: legalities ?? this.legalities,
       images: images ?? this.images,
       tcgplayer: tcgplayer ?? this.tcgplayer,
+      cardmarket: cardmarket ?? this.cardmarket,
     );
   }
 
@@ -181,20 +199,22 @@ class CardData extends Equatable {
       subtypes,
       hp,
       types,
-      evolvesTo,
-      rules,
+      evolvesFrom,
       attacks,
       weaknesses,
+      resistances,
       retreatCost,
       convertedRetreatCost,
-      datumSet,
+      setData,
       number,
       artist,
       rarity,
+      flavorText,
       nationalPokedexNumbers,
       legalities,
       images,
       tcgplayer,
+      cardmarket,
     ];
   }
 }

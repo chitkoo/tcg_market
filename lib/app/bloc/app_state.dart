@@ -11,7 +11,7 @@ class AppState extends Equatable {
   List<Object> get props => [index];
 
   AppState copyWith({
-    int? index,
+    dynamic? index,
   }) {
     return AppState(
       index: index ?? this.index,
