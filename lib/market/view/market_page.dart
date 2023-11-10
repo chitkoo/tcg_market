@@ -96,8 +96,8 @@ class _CardItem extends StatelessWidget {
     final cardImage = cardItem.images?.small ?? '';
     final cardName = cardItem.name;
     final superType = cardItem.supertype;
-    final hp = cardItem.hp;
-    final symbol = cardItem.setData?.setImages?.symbol ?? '';
+    final hp = cardItem.hp ?? 100;
+    final type = cardItem.types?[0] ?? 'Colorless';
     final price = cardItem.tcgplayer?.tcgPrices?.holofoil?.market ??
         cardItem.tcgplayer?.tcgPrices?.holofoil?.directLow ??
         cardItem.tcgplayer?.tcgPrices?.holofoil?.high ??
@@ -109,7 +109,10 @@ class _CardItem extends StatelessWidget {
     return InkWell(
       borderRadius: BorderRadius.circular(5.w),
       onTap: () => Navigator.of(context).push(
-        CommonMethods.buildPageRoute(page: const DetailsPage()),
+        CommonMethods.buildPageRoute(
+            page: DetailsPage(
+          cardItem: cardItem,
+        )),
       ),
       child: Container(
         clipBehavior: Clip.antiAlias,
@@ -192,7 +195,7 @@ class _CardItem extends StatelessWidget {
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           image: DecorationImage(
-                            image: CachedNetworkImageProvider(symbol),
+                            image: _decoImage(type),
                           ),
                         ),
                       ),
@@ -222,5 +225,35 @@ class _CardItem extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  AssetImage _decoImage(String type) {
+    switch (type) {
+      case 'Colorless':
+        return const AssetImage('assets/images/colorless.png');
+      case 'Darkness':
+        return const AssetImage('assets/images/darkness.png');
+      case 'Dragon':
+        return const AssetImage('assets/images/dragon.png');
+      case 'Fairy':
+        return const AssetImage('assets/images/fairy.png');
+      case 'Fighting':
+        return const AssetImage('assets/images/fighting.png');
+      case 'Fire':
+        return const AssetImage('assets/images/fire.png');
+      case 'Grass':
+        return const AssetImage('assets/images/grass.png');
+      case 'Lightning':
+        return const AssetImage('assets/images/lightning.png');
+      case 'Metal':
+        return const AssetImage('assets/images/metal.png');
+      case 'Psychic':
+        return const AssetImage('assets/images/psychic.png');
+      case 'Water':
+        return const AssetImage('assets/images/water.png');
+
+      default:
+        return const AssetImage('assets/images/colorless.png');
+    }
   }
 }

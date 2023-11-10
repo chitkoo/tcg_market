@@ -11,12 +11,13 @@ class CardsListApiClient {
 
   Future<Response> getCardsList({
     String page = '1',
-    String pageSize = '10',
+    String pageSize = '30',
   }) async {
     String endPoint = '/v2/cards';
     Map<String, String> query = {
       'page': page,
       'pageSize': pageSize,
+      'orderBy' : 'number',
     };
 
     Response response = await _tcgApiClient.get(

@@ -1,8 +1,14 @@
+import 'package:cards_list_repository/cards_list_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:tcg_market/common/screen_wrapper.dart';
 
 class DetailsPage extends StatelessWidget {
-  const DetailsPage({super.key});
+  const DetailsPage({
+    super.key,
+    required this.cardItem,
+  });
+
+  final CardData cardItem;
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +26,7 @@ class DetailsView extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Details'),
         ),
+      
       ),
     );
   }
