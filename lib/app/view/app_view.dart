@@ -14,11 +14,15 @@ class AppView extends StatelessWidget {
       builder: (_, __, ___) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          theme: ThemeData(
+          theme: ThemeData.dark().copyWith(
             useMaterial3: true,
             textTheme: GoogleFonts.montserratTextTheme(),
             colorScheme: ColorScheme.fromSeed(seedColor: secondaryColor),
-            appBarTheme: const AppBarTheme(centerTitle: true),
+            scaffoldBackgroundColor: primaryColor,
+            appBarTheme: const AppBarTheme(
+                centerTitle: true,
+                backgroundColor: primaryColor,
+                foregroundColor: textColor),
             elevatedButtonTheme: ElevatedButtonThemeData(
               style: ElevatedButton.styleFrom(
                 backgroundColor: secondaryColor,

@@ -57,7 +57,7 @@ class _NavBar extends StatelessWidget {
           context.read<HomeCubit>().setTab(index),
       selectedIndex: currentTabIndex,
       labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
-      backgroundColor: primaryColor.withOpacity(0.1),
+      backgroundColor: primaryColor,
       elevation: 0,
       indicatorColor: secondaryColor,
       destinations: const [
@@ -67,8 +67,8 @@ class _NavBar extends StatelessWidget {
             color: Colors.white,
           ),
           icon: Icon(
-            Icons.shopping_cart,
-            color: secondaryColor,
+            Icons.shopping_cart_outlined,
+            color: Colors.white,
           ),
           label: 'Market',
         ),
@@ -78,8 +78,8 @@ class _NavBar extends StatelessWidget {
             color: Colors.white,
           ),
           icon: Icon(
-            Icons.favorite,
-            color: secondaryColor,
+            Icons.favorite_outline_rounded,
+            color: Colors.white,
           ),
           label: 'Favourite',
         ),
