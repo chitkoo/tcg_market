@@ -35,6 +35,8 @@ class DetailsView extends StatelessWidget {
     final superType = cardItem.supertype;
     final hp = cardItem.hp ?? 100;
     final type = cardItem.types?[0] ?? 'Colorless';
+    final tcgLastUpdate = cardItem.tcgplayer?.updatedAt ?? '';
+    final cardMarketLastUpdate = cardItem.cardmarket?.updatedAt ?? '';
 
     return ScreenWrapper(
       child: Scaffold(
@@ -43,6 +45,24 @@ class DetailsView extends StatelessWidget {
           title: Text(cardName),
           backgroundColor: primaryColor,
           foregroundColor: textColor,
+          actions: const [],
+        ),
+        // floatingActionButton: FloatingActionButton.extended(
+        //   onPressed: () {},
+        //   label: const Text('Add to cart'),
+        //   icon: const Icon(Icons.shopping_cart_checkout_rounded),
+        //   shape:
+        //       RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+        // ),
+        floatingActionButton: ElevatedButton(
+          onPressed: () {},
+          child: const Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(Icons.shopping_cart_checkout_sharp),
+              Text('Add to cart'),
+            ],
+          ),
         ),
         body: Padding(
           padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 3.w),
@@ -101,7 +121,7 @@ class DetailsView extends StatelessWidget {
                         Text(
                           'HP $hp',
                           style: const TextStyle(
-                            color: primaryColor,
+                            color: textColor,
                           ),
                         ),
                         SizedBox(
@@ -128,47 +148,146 @@ class DetailsView extends StatelessWidget {
               Container(
                 margin: EdgeInsets.only(bottom: 2.5.w),
                 width: 95.w,
-                child: const Column(
-                  children: [
-                    Text.rich(
-                      TextSpan(
-                        style: TextStyle(color: textColor),
-                        text: 'Prices',
-                        children: [
-                          TextSpan(text: 'TCG Player'),
-                          TextSpan(text: 'Card Market'),
-                        ],
-                      ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Prices',
-                          style: TextStyle(color: textColor),
-                        ),
-                        Checkbox(
-                          value: true,
-                          onChanged: null,
-                          activeColor: secondaryColor,
-                        ),
-                        Text(
-                          'TCG Player',
-                          style: TextStyle(color: textColor),
-                        ),
-                        Checkbox(
-                          value: true,
-                          onChanged: null,
-                          activeColor: secondaryColor,
-                        ),
-                        Text(
-                          'Card Market',
-                          style: TextStyle(color: textColor),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
+                // child: Column(
+                //   crossAxisAlignment: CrossAxisAlignment.start,
+                //   children: [
+                //     const Row(
+                //       mainAxisAlignment: MainAxisAlignment.start,
+                //       children: [
+                //         Text(
+                //           'Prices',
+                //           style: TextStyle(color: textColor),
+                //         ),
+                //         Checkbox(
+                //           value: true,
+                //           onChanged: null,
+                //           checkColor: textColor,
+                //           fillColor: MaterialStatePropertyAll(secondaryColor),
+                //         ),
+                //         Text(
+                //           'TCG Player',
+                //           style: TextStyle(color: textColor),
+                //         ),
+                //         Checkbox(
+                //           value: true,
+                //           onChanged: null,
+                //           checkColor: textColor,
+                //           fillColor: MaterialStatePropertyAll(secondaryColor),
+                //         ),
+                //         Text(
+                //           'Card Market',
+                //           style: TextStyle(color: textColor),
+                //         ),
+                //       ],
+                //     ),
+                //     const Text(
+                //       'Buy Now From TCGplayer',
+                //       style: TextStyle(
+                //         color: secondaryColor,
+                //         fontWeight: FontWeight.bold,
+                //       ),
+                //     ),
+                //     SizedBox(
+                //       height: 1.w,
+                //     ),
+                //     Text(
+                //       'Last Updated at $tcgLastUpdate',
+                //       style: const TextStyle(color: textColor),
+                //     ),
+                //     SizedBox(
+                //       height: 3.w,
+                //     ),
+                //     Row(
+                //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //       children: [
+                //         Column(
+                //           crossAxisAlignment: CrossAxisAlignment.start,
+                //           children: [
+                //             const Text(
+                //               'HOLOFOIL MARKET',
+                //               style: TextStyle(color: textColor),
+                //             ),
+                //             SizedBox(
+                //               height: 2.5.w,
+                //             ),
+                //             const Text(
+                //               '\$1.6',
+                //               style: TextStyle(
+                //                 color: normalPriceColor,
+                //                 fontSize: 20,
+                //               ),
+                //             )
+                //           ],
+                //         ),
+                //         Column(
+                //           crossAxisAlignment: CrossAxisAlignment.start,
+                //           children: [
+                //             const Text(
+                //               'HOLOFOIL LOW',
+                //               style: TextStyle(color: textColor),
+                //             ),
+                //             SizedBox(
+                //               height: 2.5.w,
+                //             ),
+                //             const Text(
+                //               '\$1.6',
+                //               style: TextStyle(
+                //                 color: lowPriceColor,
+                //                 fontSize: 20,
+                //               ),
+                //             )
+                //           ],
+                //         ),
+                //       ],
+                //     ),
+                //     SizedBox(
+                //       height: 4.w,
+                //     ),
+                //     Row(
+                //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //       children: [
+                //         Column(
+                //           crossAxisAlignment: CrossAxisAlignment.start,
+                //           children: [
+                //             const Text(
+                //               'HOLOFOIL MID',
+                //               style: TextStyle(color: textColor),
+                //             ),
+                //             SizedBox(
+                //               height: 2.5.w,
+                //             ),
+                //             const Text(
+                //               '\$1.6',
+                //               style: TextStyle(
+                //                 color: midPriceColor,
+                //                 fontSize: 20,
+                //               ),
+                //             )
+                //           ],
+                //         ),
+                //         Column(
+                //           crossAxisAlignment: CrossAxisAlignment.start,
+                //           children: [
+                //             const Text(
+                //               'HOLOFOIL HIGH',
+                //               style: TextStyle(color: textColor),
+                //             ),
+                //             SizedBox(
+                //               height: 2.5.w,
+                //             ),
+                //             const Text(
+                //               '\$1.6',
+                //               style: TextStyle(
+                //                 color: highPriceColor,
+                //                 fontSize: 20,
+                //               ),
+                //             )
+                //           ],
+                //         ),
+                //       ],
+                //     ),
+                //   ],
+                // ),
               )
             ],
           ),

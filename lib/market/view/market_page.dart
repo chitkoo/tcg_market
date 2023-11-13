@@ -96,13 +96,8 @@ class _CardItem extends StatelessWidget {
     final superType = cardItem.supertype;
     final hp = cardItem.hp ?? 100;
     final type = cardItem.types?[0] ?? 'Colorless';
-    final price = cardItem.tcgplayer?.tcgPrices?.holofoil?.market ??
-        cardItem.tcgplayer?.tcgPrices?.holofoil?.directLow ??
-        cardItem.tcgplayer?.tcgPrices?.holofoil?.high ??
-        cardItem.tcgplayer?.tcgPrices?.holofoil?.mid ??
-        cardItem.tcgplayer?.tcgPrices?.holofoil?.low ??
-        cardItem.tcgplayer?.tcgPrices?.holofoil?.directLow ??
-        '0.01';
+
+    final price = cardItem.tcgplayer?.tcgPrices?.holofoil?.market ?? '19.99';
 
     return InkWell(
       borderRadius: BorderRadius.circular(5.w),
@@ -119,7 +114,7 @@ class _CardItem extends StatelessWidget {
         decoration: BoxDecoration(
           shape: BoxShape.rectangle,
           borderRadius: BorderRadius.circular(5.w),
-          color: Colors.white,
+          color: textColor,
           boxShadow: [
             BoxShadow(
               color: primaryColor.withOpacity(0.1),
